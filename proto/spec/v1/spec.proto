@@ -1,0 +1,29 @@
+syntax = "proto3";
+package spec.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/zunigamatias/local_camera/gen/spec/v1/spec";
+
+message DeviceRegistration {
+	string name = 1;
+	uint32 id = 2;
+	Location location = 3;
+}
+enum Location {
+	LOCATION_UNSPECIFIED = 0;
+	LOCATION_FRONT_GATE = 1;
+}
+
+message Event {
+	uint32 device_id = 1;
+	EventType event_type = 2;
+	google.protobuf.Timestamp event_time = 3; // set by device
+	google.protobuf.Timestamp ingest_time = 4;
+}
+
+enum EventType {
+	EVENT_TYPE_UNSPECIFIED = 0;
+	EVENT_TYPE_MOTION_DETECTED = 1;
+	EVENT_TYPE_MOTION_ENDED = 2;
+}
