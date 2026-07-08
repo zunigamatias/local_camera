@@ -1,1 +1,7 @@
 next.txt
+
+
+
+# docker
+docker/mosquitto/data
+docker/mosquitto/log
